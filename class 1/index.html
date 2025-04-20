@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Embedding Graph</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <h2>Sentence Embeddings Visualized</h2>
+  <div id="plot" style="width:100%;max-width:700px;height:500px;"></div>
+
+  <script>
+    // Simulated 2D embeddings for simplicity
+    const sentences = [
+      { text: "I love pizza", coords: [1, 2] },
+      { text: "Pizza is my favorite", coords: [1.2, 2.1] },
+      { text: "Cheese is tasty", coords: [0.8, 1.9] },
+      { text: "Let's play soccer", coords: [6.5, 1] },
+      { text: "Football is fun", coords: [6.8, 1.2] },
+    ];
+
+    const trace = {
+      x: sentences.map(s => s.coords[0]),
+      y: sentences.map(s => s.coords[1]),
+      mode: 'markers+text',
+      type: 'scatter',
+      text: sentences.map(s => s.text),
+      textposition: 'top center',
+      marker: { size: 12 }
+    };
+
+    const layout = {
+      xaxis: { title: 'X (Dimension 1)' },
+      yaxis: { title: 'Y (Dimension 2)' },
+      title: 'Sentence Embeddings in 2D Space'
+    };
+
+    Plotly.newPlot('plot', [trace], layout);
+  </script>
+</body>
+</html>
